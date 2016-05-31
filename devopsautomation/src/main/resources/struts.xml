@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+
+    <package name="myPackage" extends="struts-default">
+
+        
+        
+        <interceptors>
+			<interceptor name="authentication"
+				class="com.devops.interceptors.AuthenticationInterceptor"></interceptor>
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authentication"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<global-results>
+		    <result name="login" type="redirect">/login.action</result>
+		</global-results>
+		
+		
+		
+		<action name="login" class="com.devops.action.LoginAction">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success" type="redirectAction">welcome</result>
+            <result name="input">/WEB-INF/jsp/login.jsp</result>
+        </action>
+        
+        <action name="index" class="com.devops.action.IndexAction">
+            <result>/WEB-INF/jsp/index.jsp</result>
+        </action>
+
+        <action name="welcome" class="com.devops.action.HelloWorldAction">
+            <result name="input">/jsp/login.jsp</result>
+            <result>/WEB-INF/jsp/helloWorld.jsp</result>
+        </action>
+
+    </package>
+
+</struts>
