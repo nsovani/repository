@@ -33,12 +33,18 @@
         </action>
         
         <action name="index" class="com.devops.action.IndexAction">
-            <result>/WEB-INF/jsp/index.jsp</result>
+            <result type="redirect">/login.action</result>
         </action>
 
         <action name="welcome" class="com.devops.action.HelloWorldAction">
             <result name="input">/jsp/login.jsp</result>
             <result>/WEB-INF/jsp/helloWorld.jsp</result>
+        </action>
+        
+        <action name="configureJenkins" class="configureJenkins">
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success">/WEB-INF/jsp/configureJenkins.jsp</result>
+            <result name="input">/WEB-INF/jsp/configureJenkins.jsp</result>
         </action>
 
     </package>

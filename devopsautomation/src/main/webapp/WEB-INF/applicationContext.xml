@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+ <beans>
+ 	<bean id="jenkinsClient" class="com.devops.service.impl.JenkinsClient" />
+   	<bean id="jenkinsConfiguration" class="com.devops.model.JenkinsConfiguration" />
+   	<bean id="configureJenkins" class="com.devops.action.ConfigureJenkinsPageAction" singleton="false">
+   		<property name="config" ref="jenkinsConfiguration"/>
+   	</bean> 
+ </beans>

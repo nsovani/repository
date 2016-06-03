@@ -48,17 +48,14 @@
             <div id="local">
                 <h3>Local Nav. Bar</h3>
                 <ul>
-                    <li><a href="#">Content page 1</a></li>
-                    <li><a href="#">Content page 2</a></li>
-                    <li><a href="#">Content page 3</a></li>
-                    <li><a href="#">Content page 4</a></li>
-                    <li><a href="#">Content page 5</a></li>
-                    <li><a href="#">Content page 6</a></li>
+                    <li><a href="configureJenkins.action">Configure Jenkins</a></li>
+                    <li><a href="configureBuild.action">Configure Build</a></li>
+                    <li><a href="#">View</a></li>
                 </ul>
             </div>
             
             
-            <div id="nav">
+            <!-- div id="nav">
                 <div class="wrapper">
                 <h3>Nav. bar</h3>
                 <ul class="clearfix">
@@ -71,7 +68,7 @@
                 </ul>
                 </div>
                 <hr />
-            </div>
+            </div-->
         </div>
         
         <div id="footer" class="clearfix">

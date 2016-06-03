@@ -18,29 +18,34 @@ package com.devops.test.action;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.SessionAttributes;
-
 import junit.framework.TestCase;
 
-import com.devops.action.HelloWorldAction;
+import com.devops.action.LoginAction;
 import com.devops.model.User;
 import com.opensymphony.xwork2.Action;
 
 /**
  * 
  */
-public class HelloWorldActionTest extends TestCase {
+public class LoginActionTest extends TestCase {
     
-    public void testHelloWorldAction() throws Exception {
+	public void testLoginActionWithOutUser() throws Exception {
+	  	
+        LoginAction action = new LoginAction();
+        String result = action.execute();
+        assertEquals(Action.INPUT, result);
+    }
+	
+	public void testLoginActionWithUser() throws Exception {
     	    	  	
-        HelloWorldAction action = new HelloWorldAction();
+        LoginAction action = new LoginAction();
         Map<String, Object> sessionAttributes = new HashMap<String,Object>();
-        User user = new User();
+        User user = action.getModel();
         user.setUserName("TestUser1");
-        sessionAttributes.put("USER",user);
 		action.setSession(sessionAttributes );
         String result = action.execute();
         assertEquals(Action.SUCCESS, result);
     }
+    
 }
 
