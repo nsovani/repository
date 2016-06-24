@@ -5,6 +5,6 @@
  	<bean id="jenkinsClient" class="com.devops.service.impl.JenkinsClient" />
    	<bean id="jenkinsConfiguration" class="com.devops.model.JenkinsConfiguration" />
    	<bean id="configureJenkins" class="com.devops.action.ConfigureJenkinsPageAction" singleton="false">
-   		<property name="config" ref="jenkinsConfiguration"/>
+   		<property name="jenkinsConfiguration" ref="jenkinsConfiguration"/>
    	</bean> 
  </beans>

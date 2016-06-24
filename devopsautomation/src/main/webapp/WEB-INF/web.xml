@@ -25,10 +25,10 @@
         <filter-name>struts2-execute</filter-name>
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsExecuteFilter</filter-class>
     </filter>
-	<filter>
+	<!-- filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
+	</filter -->
 	
 	<filter-mapping>
         <filter-name>struts2-prepare</filter-name>

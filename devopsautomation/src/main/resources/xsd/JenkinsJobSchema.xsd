@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element type="hudson.maven.MavenModuleSet" name="mavenModuleSet" />
+
+	<xsd:complexType name="hudson.maven.MavenModuleSet">
+
+		<xsd:complexContent>
+
+			<xsd:extension base="hudson.maven.AbstractMavenProject">
+
+				<xsd:sequence>
+
+					<xsd:element type="hudson.maven.MavenModule" name="module"
+						maxOccurs="unbounded" minOccurs="0" />
+
+				</xsd:sequence>
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.maven.MavenModule">
+
+
+		<xsd:complexContent>
+
+
+			<xsd:extension base="hudson.maven.AbstractMavenProject">
+
+
+				<xsd:sequence>
+
+					<xsd:element type="xsd:string" name="displayName"
+						minOccurs="0" />
+				</xsd:sequence>
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.maven.AbstractMavenProject">
+
+
+		<xsd:complexContent>
+
+
+			<xsd:extension base="hudson.model.AbstractProject">
+
+				<xsd:sequence />
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.AbstractProject">
+
+
+		<xsd:complexContent>
+
+
+			<xsd:extension base="hudson.model.Job">
+
+
+				<xsd:sequence>
+
+					<xsd:element type="xsd:boolean" name="concurrentBuild" />
+
+					<xsd:element type="hudson.model.AbstractProject" name="downstreamProject"
+						maxOccurs="unbounded" minOccurs="0" />
+
+					<xsd:element type="hudson.scm.SCM" name="scm"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.AbstractProject" name="upstreamProject"
+						maxOccurs="unbounded" minOccurs="0" />
+
+				</xsd:sequence>
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.scm.SCM">
+
+
+		<xsd:sequence>
+
+			<xsd:element type="hudson.scm.RepositoryBrowser" name="browser"
+				minOccurs="0" />
+
+			<xsd:element type="xsd:string" name="type" minOccurs="0" />
+
+		</xsd:sequence>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.scm.RepositoryBrowser">
+
+		<xsd:sequence />
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.Job">
+
+
+		<xsd:complexContent>
+
+
+			<xsd:extension base="hudson.model.AbstractItem">
+
+
+				<xsd:sequence>
+
+					<xsd:element type="hudson.model.Run" name="allBuild"
+						maxOccurs="unbounded" minOccurs="0" />
+
+					<xsd:element type="xsd:boolean" name="buildable" />
+
+					<xsd:element type="hudson.model.Run" name="build"
+						maxOccurs="unbounded" minOccurs="0" />
+
+					<xsd:element type="hudson.model.BallColor" name="color"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.Run" name="firstBuild"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.HealthReport" name="healthReport"
+						maxOccurs="unbounded" minOccurs="0" />
+
+					<xsd:element type="xsd:boolean" name="inQueue" />
+
+					<xsd:element type="xsd:boolean" name="keepDependencies" />
+
+					<xsd:element type="hudson.model.Run" name="lastBuild"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.Run" name="lastCompletedBuild"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.Run" name="lastFailedBuild"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.Run" name="lastStableBuild"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.Run" name="lastSuccessfulBuild"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.Run" name="lastUnstableBuild"
+						minOccurs="0" />
+
+					<xsd:element type="hudson.model.Run" name="lastUnsuccessfulBuild"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:int" name="nextBuildNumber" />
+
+					<xsd:element type="hudson.model.JobProperty" name="property"
+						maxOccurs="unbounded" minOccurs="0" />
+
+					<xsd:element type="hudson.model.Queue-Item" name="queueItem"
+						minOccurs="0" />
+
+				</xsd:sequence>
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.Queue-Item">
+
+
+		<xsd:complexContent>
+
+
+			<xsd:extension base="hudson.model.Actionable">
+
+
+				<xsd:sequence>
+
+					<xsd:element type="xsd:boolean" name="blocked" />
+
+					<xsd:element type="xsd:boolean" name="buildable" />
+
+					<xsd:element type="xsd:long" name="id" />
+
+					<xsd:element type="xsd:long" name="inQueueSince" />
+
+					<xsd:element type="xsd:string" name="params" minOccurs="0" />
+
+					<xsd:element type="xsd:boolean" name="stuck" />
+
+
+					<xsd:element type="xsd:anyType" name="task" minOccurs="0">
+
+
+						<xsd:annotation>
+
+							<xsd:documentation> Project to be built. </xsd:documentation>
+
+						</xsd:annotation>
+
+					</xsd:element>
+
+					<xsd:element type="xsd:string" name="url" minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="why" minOccurs="0" />
+
+				</xsd:sequence>
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.Actionable">
+
+
+		<xsd:sequence>
+
+			<xsd:element type="xsd:anyType" name="action" maxOccurs="unbounded"
+				minOccurs="0" />
+
+		</xsd:sequence>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.JobProperty">
+
+		<xsd:sequence />
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.HealthReport">
+
+
+		<xsd:sequence>
+
+			<xsd:element type="xsd:string" name="description"
+				minOccurs="0" />
+
+			<xsd:element type="xsd:string" name="iconClassName"
+				minOccurs="0" />
+
+			<xsd:element type="xsd:string" name="iconUrl" minOccurs="0" />
+
+			<xsd:element type="xsd:int" name="score" />
+
+		</xsd:sequence>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.Run">
+
+
+		<xsd:complexContent>
+
+
+			<xsd:extension base="hudson.model.Actionable">
+
+
+				<xsd:sequence>
+
+					<xsd:element type="hudson.model.Run-Artifact" name="artifact"
+						maxOccurs="unbounded" minOccurs="0" />
+
+					<xsd:element type="xsd:boolean" name="building" />
+
+					<xsd:element type="xsd:string" name="description"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="displayName"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:long" name="duration" />
+
+					<xsd:element type="xsd:long" name="estimatedDuration" />
+
+					<xsd:element type="hudson.model.Executor" name="executor"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="fullDisplayName"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="id" minOccurs="0" />
+
+					<xsd:element type="xsd:boolean" name="keepLog" />
+
+					<xsd:element type="xsd:int" name="number" />
+
+					<xsd:element type="xsd:long" name="queueId" />
+
+					<xsd:element type="xsd:anyType" name="result"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:long" name="timestamp"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="url" minOccurs="0" />
+
+				</xsd:sequence>
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.Executor">
+
+
+		<xsd:sequence>
+
+			<xsd:element type="xsd:anyType" name="currentExecutable"
+				minOccurs="0" />
+
+			<xsd:element type="hudson.model.queue.WorkUnit" name="currentWorkUnit"
+				minOccurs="0" />
+
+			<xsd:element type="xsd:boolean" name="idle" />
+
+			<xsd:element type="xsd:boolean" name="likelyStuck" />
+
+			<xsd:element type="xsd:int" name="number" />
+
+			<xsd:element type="xsd:int" name="progress" />
+
+		</xsd:sequence>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.queue.WorkUnit">
+
+		<xsd:sequence />
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.Run-Artifact">
+
+
+		<xsd:sequence>
+
+			<xsd:element type="xsd:string" name="displayPath"
+				minOccurs="0" />
+
+			<xsd:element type="xsd:string" name="fileName" minOccurs="0" />
+
+
+			<xsd:element type="xsd:string" name="relativePath"
+				minOccurs="0">
+
+
+				<xsd:annotation>
+
+					<xsd:documentation> Relative path name from artifacts root.
+					</xsd:documentation>
+
+				</xsd:annotation>
+
+			</xsd:element>
+
+		</xsd:sequence>
+
+	</xsd:complexType>
+
+
+	<xsd:complexType name="hudson.model.AbstractItem">
+
+
+		<xsd:complexContent>
+
+
+			<xsd:extension base="hudson.model.Actionable">
+
+
+				<xsd:sequence>
+
+					<xsd:element type="xsd:string" name="description"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="displayName"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="displayNameOrNull"
+						minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="name" minOccurs="0" />
+
+					<xsd:element type="xsd:string" name="url" minOccurs="0" />
+
+				</xsd:sequence>
+
+			</xsd:extension>
+
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+
+	<xsd:simpleType name="hudson.model.BallColor">
+
+
+		<xsd:restriction base="xsd:string">
+
+			<xsd:enumeration value="red" />
+
+			<xsd:enumeration value="red_anime" />
+
+			<xsd:enumeration value="yellow" />
+
+			<xsd:enumeration value="yellow_anime" />
+
+			<xsd:enumeration value="blue" />
+
+			<xsd:enumeration value="blue_anime" />
+
+			<xsd:enumeration value="grey" />
+
+			<xsd:enumeration value="grey_anime" />
+
+			<xsd:enumeration value="disabled" />
+
+			<xsd:enumeration value="disabled_anime" />
+
+			<xsd:enumeration value="aborted" />
+
+			<xsd:enumeration value="aborted_anime" />
+
+			<xsd:enumeration value="notbuilt" />
+
+			<xsd:enumeration value="notbuilt_anime" />
+
+		</xsd:restriction>
+
+	</xsd:simpleType>
+
+</xsd:schema>

@@ -156,6 +156,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             <artifactId>jaxrs-api</artifactId>
             <version>3.0.5.Final</version>
         </dependency>
+        
+        <!-- JAXB class generation -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2.5</version>
+		</dependency>
+        
 		
     </dependencies>
 	
@@ -212,4 +225,41 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             </plugin>
     	</plugins>
     </build>
+    
+    <profiles>
+    	<profile>
+    		<id>generate-jaxb-classes</id>
+    		<build>
+	    		<plugins>
+			        <plugin>
+			            <groupId>org.codehaus.mojo</groupId>
+			            <artifactId>jaxb2-maven-plugin</artifactId>
+			            <executions>
+			                <execution>
+			                    <goals>
+			                        <goal>xjc</goal>
+			                    </goals>
+			                </execution>
+			            </executions>
+			            <configuration>
+			                <!-- The schema directory or xsd files. -->
+			                <schemaDirectory>${basedir}/src/main/resources</schemaDirectory>
+			                
+			                <!-- The package in which the source files will be generated. -->
+			                <packageName>com.devops.model.jenkins.item.mavenmoduleset</packageName>
+			                <!-- The working directory to create the generated java source files. -->
+			                <outputDirectory>${basedir}/src/main/java</outputDirectory>
+			                <sources>
+			                	<source>${basedir}/src/main/resources/xsd/JenkinsJobSchema.xsd</source>
+			                </sources>
+			                <clearOutputDir>false</clearOutputDir>
+			                
+			            </configuration>
+			        </plugin>
+	    		</plugins>
+    		</build>
+    	</profile>
+    </profiles>
+    
+    
 </project>

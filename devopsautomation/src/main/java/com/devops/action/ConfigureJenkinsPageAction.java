@@ -3,6 +3,10 @@ package com.devops.action;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+
+import uk.ltd.getahead.dwr.util.Logger;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -12,21 +16,28 @@ public class ConfigureJenkinsPageAction extends ActionSupport implements Session
  
     private static final long serialVersionUID = -3369875299120377549L;
     
-    private JenkinsConfiguration config;
+    private static Logger logger = Logger.getLogger(ConfigureJenkinsPageAction.class);
     
-    public JenkinsConfiguration getConfig() {
-		return config;
+    private static final JenkinsConfiguration jenkinsConfiguration =  new JenkinsConfiguration();
+    
+    public ConfigureJenkinsPageAction(){
+    	logger.warn("Instantiating " + ConfigureJenkinsPageAction.class.getName());
+    }
+    
+    public static JenkinsConfiguration getConfig() {
+		return jenkinsConfiguration;
 	}
 
-	public void setConfig(JenkinsConfiguration config) {
-		this.config = config;
-	}
+//	public void setConfig(JenkinsConfiguration config) {
+//		logger.warn(config == null?"empty":"not null");
+//		this.jenkinsConfiguration = config;
+//	}
 
 	private Map<String, Object> sessionAttributes = null;
  
     @Override
     public String execute(){
-    	if(config.getUrl() != null && config.getUrl().length() > 0)
+    	if(jenkinsConfiguration.getConfigurationName() != null && jenkinsConfiguration.getConfigurationName().length() > 0)
     	{
         	return SUCCESS;
         }else{
@@ -41,7 +52,7 @@ public class ConfigureJenkinsPageAction extends ActionSupport implements Session
 	@Override
 	public JenkinsConfiguration getModel() {
 		// TODO Auto-generated method stub
-		return config;
+		return jenkinsConfiguration;
 	}
      
 }
