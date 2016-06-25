@@ -5,7 +5,7 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
 	<head>
-		<title>Configure Jenkins Item</title>
+		<title>Configure Jenkins</title>
 		<s:head />
 	</head>
 	<body>
@@ -16,7 +16,7 @@
 			<s:textfield label="Protocol" name="protocol" />
 			<s:textfield label="Username" name="username" />
 			<s:password label="Password" name="password" />
-			<s:password label="Configuration Name" name="configurationName" />
+			<s:textfield label="Configuration Name" name="configurationName" />
 			<s:submit />
 		</s:form>
 		

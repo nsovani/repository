@@ -47,7 +47,7 @@
             <result name="input">/WEB-INF/jsp/configureJenkins.jsp</result>
         </action>
         
-        <action name="configureJenkins" class="com.devops.action.ConfigureBuildPageAction">
+        <action name="configureBuild" class="com.devops.action.ConfigureBuildPageAction">
         	<interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="error">/WEB-INF/jsp/configureJenkins.jsp</result>
             <result name="input">/WEB-INF/jsp/configureBuild.jsp</result>

@@ -9,16 +9,6 @@
 		<s:head />
 	</head>
 	<body>
-		Configure Jenkins parameters
-		<s:form action="configureJenkins.action">
-			<s:textfield label="IP or Hostname" name="url" />
-			<s:textfield label="Port" name="port" />
-			<s:textfield label="Protocol" name="protocol" />
-			<s:textfield label="Username" name="username" />
-			<s:password label="Password" name="password" />
-			<s:password label="Configuration Name" name="configurationName" />
-			<s:submit />
-		</s:form>
-		
+		Build item added successfully.
 	</body>
 </html>

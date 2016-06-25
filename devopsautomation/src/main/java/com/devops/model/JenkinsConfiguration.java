@@ -25,8 +25,8 @@ private static Logger logger = Logger.getLogger(ConfigureJenkinsPageAction.class
 		this.protocol = protocol;
 	}
 	public String getUrl() {
-		if (port == null || "".equalsIgnoreCase(port)){
-			return protocol + "://" + url + ":" + port;
+		if (port != null && !"".equalsIgnoreCase(port)){
+			return protocol + "://" + url + ":" + port + "/jenkins";
 		}else{
 			return protocol + "://" + url;
 		}

@@ -9,16 +9,14 @@
 		<s:head />
 	</head>
 	<body>
-		Configure Jenkins parameters
-		<s:form action="configureJenkins.action">
-			<s:textfield label="IP or Hostname" name="url" />
+		Configure Jenkins Item
+		<s:form action="configureBuild.action">
+		<s:textfield label="Item Name" name="itemName" />
+			<s:select list="cvsChoices" name="cvsChoice" label="Select CVS"></s:select>
+			<s:textfield label="CVS url" name="url" />
 			<s:textfield label="Port" name="port" />
-			<s:textfield label="Protocol" name="protocol" />
-			<s:textfield label="Username" name="username" />
-			<s:password label="Password" name="password" />
-			<s:password label="Configuration Name" name="configurationName" />
+			<s:textfield label="POM Location" name="pomLocation" />
 			<s:submit />
 		</s:form>
-		
 	</body>
 </html>
