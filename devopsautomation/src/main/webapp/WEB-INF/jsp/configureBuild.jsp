@@ -14,7 +14,7 @@
 		<s:textfield label="Item Name" name="itemName" />
 			<s:select list="cvsChoices" name="cvsChoice" label="Select CVS"></s:select>
 			<s:textfield label="CVS url" name="url" />
-			<s:textfield label="Port" name="port" />
+			<s:select list="buildToolChoices" name="buildToolChoice" label="Select Build Tool"></s:select>
 			<s:textfield label="POM Location" name="pomLocation" />
 			<s:submit />
 		</s:form>
